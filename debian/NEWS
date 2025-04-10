@@ -1,0 +1,7 @@
+can-utils (2020.02.04-2) unstable; urgency=medium
+
+    SAE J1993 tools (jacd, jcat, jspy, jsr) were renamed with prefix j1939
+    according to upstream changes:
+    https://github.com/linux-can/can-utils/pull/199
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Mon, 27 Apr 2020 08:33:43 +0300
