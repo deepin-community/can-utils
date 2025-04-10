@@ -1,0 +1,10 @@
+--- a/GNUmakefile.am
++++ b/GNUmakefile.am
+@@ -98,7 +98,6 @@
+ 	j1939sr \
+ 	log2asc \
+ 	log2long \
+-	mcp251xfd-dump \
+ 	slcan_attach \
+ 	slcand \
+ 	slcanpty \

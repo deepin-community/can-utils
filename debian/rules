@@ -1,4 +1,30 @@
 #!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+HELP2MAN = help2man
+PACKAGE_VERSION = $(shell dpkg-parsechangelog | awk '/^Version:/ {print $$2}')
+
+#bcmserver and log2long do not have -? option
+PROGRAMS = asc2log canbusload can-calc-bit-timing candump canfdtest \
+cangen cangw canlogserver canplayer cansend cansniffer cansequence \
+isotpdump isotpperf isotprecv isotpsend isotpserver isotpsniffer isotptun \
+j1939acd j1939cat j1939spy j1939sr testj1939 \
+log2asc \
+slcan_attach slcand slcanpty
+
+MANPAGES = $(PROGRAMS:%=%.1)
+
+%.1: %
+	$(HELP2MAN) --no-info --no-discard-stderr --help-option="-?" --version-string="$< $(PACKAGE_VERSION)" ./$< > $@
 
 %:
 	dh $@
+
+override_dh_auto_clean:
+	rm -f $(MANPAGES)
+	dh_auto_clean $@
+
+override_dh_auto_install: $(MANPAGES)
+	dh_installman $(MANPAGES)
+	dh_auto_install $@

@@ -1,0 +1,11 @@
+--- a/GNUmakefile.am
++++ b/GNUmakefile.am
+@@ -1,8 +1,6 @@
+ ACLOCAL_AMFLAGS = -I config/m4
+ 
+ AM_CPPFLAGS = \
+-	-I$(top_srcdir)/include \
+-	-I$(top_builddir)/include \
+ 	$(linux_CFLAGS)
+ 
+ EXTRA_DIST =
